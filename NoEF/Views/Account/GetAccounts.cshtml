@@ -1,0 +1,50 @@
+﻿@model IEnumerable<NoEF.Models.AccountCurrency>
+
+<p>
+    @Html.ActionLink("Check Currencies", "GetCurrencies", new { area = "", controller = "Currency" })
+</p>
+<p>
+    @Html.ActionLink("New Currency 'Income' Account", "AddCurrencyAccount")
+</p>
+<p>
+    @Html.ActionLink("New Account", "AddAccount")
+</p>
+<p>
+    @Html.ActionLink("Operation List", "GetOperations", new { area = "", controller = "Operation" })
+</p>
+
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Balance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CurName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        @Html.HiddenFor(model => item.Id)
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Balance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CurName)
+            </td>
+            <td>             
+               @Html.ActionLink("Delete", "DeleteAccount", new { id = item.Id,  })  <!--, new { onclick = "return confirm('Are sure wants to delete?');" }) -->
+            </td>
+        </tr>
+    }
+</table>
+

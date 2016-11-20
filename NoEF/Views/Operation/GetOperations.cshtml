@@ -1,0 +1,47 @@
+﻿@model IEnumerable<NoEF.Models.OperationAccount>
+
+<p>
+    @Html.ActionLink("New Operation", "AddOperation")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DebetAcc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreditAcc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comment)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DebetAcc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreditAcc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comment)
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "DeleteOperation", new { id=item.Id }, new { onclick = "return confirm('Are sure wants to delete?');" })
+        </td>
+    </tr>
+}
+
+</table>
+
+<div>
+    @Html.ActionLink("Back to Account List", "GetAccounts", "Account")
+</div>
