@@ -137,7 +137,7 @@ namespace NoEF.Controllers
             catch(Exception ex)
             {
                 ViewBag.Message = ex.Message;
-                ViewBag.Message = "Account has references in Operation table. You have to delete corresponding operations";
+                ViewBag.Message = "Account has references in Operation table. You have to delete corresponding operations.";
                 return View();
             }
         }

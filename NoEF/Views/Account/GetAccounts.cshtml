@@ -1,50 +1,73 @@
 ﻿@model IEnumerable<NoEF.Models.AccountCurrency>
 
-<p>
-    @Html.ActionLink("Check Currencies", "GetCurrencies", new { area = "", controller = "Currency" })
-</p>
-<p>
-    @Html.ActionLink("New Currency 'Income' Account", "AddCurrencyAccount")
-</p>
-<p>
-    @Html.ActionLink("New Account", "AddAccount")
-</p>
-<p>
-    @Html.ActionLink("Operation List", "GetOperations", new { area = "", controller = "Operation" })
-</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <!--link href="~/Content/bootstrap-theme.css" rel="stylesheet" />  -->
+    <title>Index</title>
+    <style>
+        .btn a {
+            color: white;
+            text-decoration: none;
+        }
 
-<table class="table">
-    <tr>
+        body {
+            background-color: #F1F1F1;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Check Currencies", "GetCurrencies", new { area = "", controller = "Currency" })
+    </p>
+    <p>
+        @Html.ActionLink("New Currency 'Income' Account", "AddCurrencyAccount")
+    </p>
+    <p>
+        @Html.ActionLink("New Account", "AddAccount")
+    </p>
+    <p>
+        @Html.ActionLink("Operation List", "GetOperations", new { area = "", controller = "Operation" })
+    </p>
+    <div class="text-center">
+        <table class="table">
+            <tr>
 
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Balance)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CurName)
-        </th>
-        <th></th>
-    </tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Balance)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CurName)
+                </th>
+                <th></th>
+            </tr>
 
-    @foreach (var item in Model)
-    {
-        @Html.HiddenFor(model => item.Id)
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Balance)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CurName)
-            </td>
-            <td>             
-               @Html.ActionLink("Delete", "DeleteAccount", new { id = item.Id,  })  <!--, new { onclick = "return confirm('Are sure wants to delete?');" }) -->
-            </td>
-        </tr>
-    }
-</table>
-
+            @foreach (var item in Model)
+            {
+                @Html.HiddenFor(model => item.Id)
+                <tr>
+                    <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Balance)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CurName)
+                    </td>
+                    <td>
+                        <div class="btn btn-success">
+                            @Html.ActionLink("Delete", "DeleteAccount", new { id = item.Id, })  <!--, new { onclick = "return confirm('Are sure wants to delete?');" }) -->
+                        </div>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>
